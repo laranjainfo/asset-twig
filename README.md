@@ -21,7 +21,7 @@ $twig->addExtension(new Laranjainfo\TwigExtension\Asset());
 
 You can create yout own config file and load with the extension, OR use our default configuration:
 
-To load yout file:
+To load your file:
 
 ```php
 $cfg = [
@@ -40,7 +40,7 @@ $twig->addExtension(new Laranjainfo\TwigExtension\Asset($cfg));
 
 ## Usage
 
-You can use the asset helper with:
+You can use the _asset helper_ with:
 
 - Javascript files;
 - CSS files;
