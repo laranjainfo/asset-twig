@@ -1,6 +1,6 @@
 <?php
 
-namespace Laranjainfo\TwigExtension;
+namespace Laranjainfo\TwigAssets;
 
 use Twig\TwigFunction;
 
