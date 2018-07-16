@@ -1,0 +1,11 @@
+{
+	"name": "laranjainfo/asset-twig",
+	"description": "Simple Twig function to help with assets like css, js and images files",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Rafhael Marsigli",
+			"email": "rafhael@laranja.info"
+		}
+	]
+}
