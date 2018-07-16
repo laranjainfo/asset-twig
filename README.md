@@ -1,6 +1,6 @@
 # Simple Asset Twig Extension
 
-Simple twig function to render assets in twig view
+Simple twig function to render assets in twig view. We use this helper inside some fast developed hotsites inside out small agency. hope you enjoy it ;)
 
 ## Installation
 

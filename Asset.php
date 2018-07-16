@@ -8,7 +8,7 @@ class Asset extends \Slim\Views\TwigExtension
 {
 	public $cfg;
 
-	public function __construct($cfg)
+	public function __construct($config)
 	{
 		$this->cfg = $config ? $config : require __DIR__ . '/app/config/asset.php';
 	}
@@ -74,7 +74,7 @@ class Asset extends \Slim\Views\TwigExtension
 	{
 		$file		= $data['file'];
 		$type		= $data['type'];
-		$version	= $this->cfg['version'] == true ? (isset($data['version']) ? $data['version'] : null) : false;
+		$version	= $this->cfg['version'] ? (isset($data['version']) ? $data['version'] : null) : false;
 
 		// File extension required
 		if ($type == false OR $type == null)
@@ -84,26 +84,15 @@ class Asset extends \Slim\Views\TwigExtension
 
 		// Extensions
 		$types = [
-			'css'		 => '<link rel="stylesheet" type="text/css" href="'.$this->cfg['css_dir'].'{{ asset }}">',
-			'js'		 => '<script type="text/javascript" src="'.$this->cfg['js_dir'].'{{ asset }}"></script>',
-			'images'	 => '<img src="'.$this->cfg['images_dir'].'{{ asset }}" {{ params }}>',
-			'manifest'	 => '<link rel="manifest" href="'.$this->cfg['manifest_dir'].'{{ asset }}">',
-			'touch-icon' => '<link rel="apple-touch-icon" href="'.$this->cfg['touch_icon_dir'].'{{ asset }}">',
+			'css'		 => '<link rel="stylesheet" type="text/css" href="'.$this->dirGen('css_dir').'{{ asset }}">',
+			'js'		 => '<script type="text/javascript" src="'.$this->dirGen('js_dir').'{{ asset }}"></script>',
+			'images'	 => '<img src="'.$this->dirGen('images_dir').'{{ asset }}" {{ params }}>',
+			'manifest'	 => '<link rel="manifest" href="'.$this->dirGen('manifest_dir').'{{ asset }}">',
+			'touch-icon' => '<link rel="apple-touch-icon" href="'.$this->dirGen('touch_icon_dir').'{{ asset }}">',
 		];
 
 		// Version
-		if ($version == null)
-		{
-			$v = null;
-		}
-		elseif ($version == true)
-		{
-			$v = $this->cfg['version_perfix'] . $this->cfg['version'];
-		}
-		else
-		{
-			$v = $this->cfg['version_perfix'] . $version;
-		}
+		$v = $version ? $this->cfg['version_prefix'] . $this->cfg['version'] : null;
 
 		// Print version of file inside file
 		$asset = $file . $v;
@@ -168,5 +157,19 @@ class Asset extends \Slim\Views\TwigExtension
 		}
 
 		return null;
+	}
+
+	/**
+	 * Generating url for the asset
+	 * 
+	 * @param  string $folder Asset directory
+	 * @return string
+	 */
+	protected function dirGen($folder)
+	{
+		$prefix = $this->cfg['prefix'] ? $this->cfg['prefix'] . '/' : null;
+		$folder = $this->cfg[$folder] ? $this->cfg[$folder] . '/' : null;
+		
+		return $this->cfg['site_url'] . '/' . $prefix . $folder;
 	}
 }
