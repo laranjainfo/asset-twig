@@ -1,6 +1,7 @@
 {
 	"name": "laranjainfo/asset-twig",
 	"description": "Simple Twig function to help with assets like css, js and images files",
+    "type": "library",
 	"keywords": ["twig", "asset"],
 	"license": "MIT",
 	"authors": [
@@ -12,5 +13,8 @@
     "require": {
         "php": "^7.0",
         "twig/twig": "^2.0"
-    }
+    },
+    "autoload": {
+		"psr-4": { "LaranjaInfo\\TwigAssets\\": "" }
+	}
 }
