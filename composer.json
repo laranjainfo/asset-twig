@@ -1,11 +1,16 @@
 {
 	"name": "laranjainfo/asset-twig",
 	"description": "Simple Twig function to help with assets like css, js and images files",
+	"keywords": ["twig", "asset"],
 	"license": "MIT",
 	"authors": [
 		{
 			"name": "Rafhael Marsigli",
 			"email": "rafhael@laranja.info"
 		}
-	]
+	],
+    "require": {
+        "php": "^7.0",
+        "twig/twig": "^2.0"
+    },
 }

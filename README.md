@@ -12,7 +12,7 @@ Install the extension:
 
 Add the extension to yout Twig, like this:
 
-```
+```php
 $twig = new Twig_Environment(...);
 $twig->addExtension(new Laranjainfo\TwigExtension\Asset());
 ```
@@ -23,19 +23,19 @@ You can create yout own config file and load with the extension, OR use our defa
 
 To load yout file:
 
-```
-	$cfg = [
-		'site_url'			=> 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'],
-		'prefix'			=> 'web',
-		'version'			=> true,
-		'css_dir'			=> 'css',
-		'js_dir'			=> 'js',
-		'images_dir'		=> 'images',
-		'touch_icon_dir'	=> 'icons',
-		'manifest_dir'		=> '',
-	];
+```php
+$cfg = [
+	'site_url' => 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'],
+	'prefix' => 'web',
+	'version' => true,
+	'css_dir' => 'css',
+	'js_dir' => 'js',
+	'images_dir' => 'images',
+	'touch_icon_dir' => 'icons',
+	'manifest_dir' => '',
+];
 
-	$twig->addExtension(new Laranjainfo\TwigExtension\Asset($cfg));
+$twig->addExtension(new Laranjainfo\TwigExtension\Asset($cfg));
 ```
 
 ## Usage
